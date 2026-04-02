@@ -1,0 +1,23 @@
+[
+  {
+    "id": "gladius_task_force_like",
+    "name": "Gladius Task Force",
+    "army_id": "adeptus_startes",
+    "rules": [
+      {
+        "rule_id": "doctrine_flex",
+        "scope": "army",
+        "effect_type": "once_per_turn_stance",
+        "params": {
+          "description": "Choose one stance each turn granting minor army-wide bonus."
+        }
+      }
+    ],
+    "stratagem_ids": [
+      "armor_of_contempt_like",
+      "honor_the_chapter_like",
+      "rapid_redeployment_like"
+    ],
+    "build_restrictions": []
+  }
+]

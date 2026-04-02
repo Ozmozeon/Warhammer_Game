@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "unit.schema.json",
+  "title": "UnitDefinition",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "faction_id",
+    "is_leader",
+    "keywords",
+    "faction_keywords",
+    "model_count",
+    "composition",
+    "points_rules",
+    "stats_by_role",
+    "default_wargear",
+    "wargear_options",
+    "abilities"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "name": { "type": "string", "minLength": 1 },
+    "faction_id": { "type": "string" },
+    "is_leader": { "type": "boolean" },
+    "keywords": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "faction_keywords": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "model_count": {
+      "type": "object",
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "max": { "type": "integer", "minimum": 1, "maximum": 20 }
+      },
+      "additionalProperties": false
+    },
+    "composition": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["role_id", "min", "max"],
+        "properties": {
+          "role_id": { "type": "string" },
+          "min": { "type": "integer", "minimum": 0, "maximum": 20 },
+          "max": { "type": "integer", "minimum": 0, "maximum": 20 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "points_rules": {
+      "type": "object",
+      "required": ["mode"],
+      "properties": {
+        "mode": { "type": "string", "enum": ["size_band", "per_model", "hybrid"] },
+        "size_bands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["models", "points"],
+            "properties": {
+              "models": { "type": "integer", "minimum": 1, "maximum": 20 },
+              "points": { "type": "integer", "minimum": 0 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "per_model_points": { "type": "integer", "minimum": 0 },
+        "base_points": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "stats_by_role": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["move", "toughness", "save", "wounds", "leadership", "objective_control"],
+        "properties": {
+          "move": { "type": "number", "minimum": 0 },
+          "toughness": { "type": "integer", "minimum": 1 },
+          "save": { "type": "integer", "minimum": 2, "maximum": 7 },
+          "wounds": { "type": "integer", "minimum": 1 },
+          "leadership": { "type": "integer", "minimum": 2, "maximum": 9 },
+          "objective_control": { "type": "integer", "minimum": 0 }
+        },
+        "additionalProperties": true
+      }
+    },
+    "default_wargear": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role_id", "item_id"],
+        "properties": {
+          "role_id": { "type": "string" },
+          "item_id": { "type": "string" },
+          "count": { "type": "integer", "minimum": 1, "default": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "wargear_options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["option_id", "target_role_id", "type", "choices", "constraints"],
+        "properties": {
+          "option_id": { "type": "string" },
+          "target_role_id": { "type": "string" },
+          "type": { "type": "string", "enum": ["replace", "add", "upgrade"] },
+          "choices": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["item_id"],
+              "properties": {
+                "item_id": { "type": "string" },
+                "points_delta": { "type": "integer", "default": 0 }
+              },
+              "additionalProperties": false
+            }
+          },
+          "constraints": {
+            "type": "object",
+            "properties": {
+              "max_selected_total": { "type": "integer", "minimum": 1 },
+              "per_n_models": { "type": "integer", "minimum": 1 },
+              "requires_role_count_at_least": { "type": "integer", "minimum": 1 },
+              "mutually_exclusive_group": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "abilities": { "type": "array", "items": { "type": "string" } },
+    "can_join_unit_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Only meaningful when is_leader=true"
+    },
+    "leader_joinable_by_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Only meaningful when is_leader=false"
+    }
+  },
+  "additionalProperties": false
+}
