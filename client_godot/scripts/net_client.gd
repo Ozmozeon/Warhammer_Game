@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 		return
 
 	while _ws.get_available_packet_count() > 0:
-		var text := _ws.get_packet().get_string_from_utf8()
-		var parsed := JSON.parse_string(text)
+		var text: String = _ws.get_packet().get_string_from_utf8()
+		var parsed: Variant = JSON.parse_string(text)
 		if typeof(parsed) == TYPE_DICTIONARY:
 			emit_signal("message_received", parsed)
