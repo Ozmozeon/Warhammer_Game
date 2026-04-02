@@ -74,14 +74,15 @@
       "type": "object",
       "additionalProperties": {
         "type": "object",
-        "required": ["move", "toughness", "save", "wounds", "leadership", "objective_control"],
+        "required": ["move", "toughness", "save", "wounds", "leadership", "objective_control", "base_size_inches"],
         "properties": {
           "move": { "type": "number", "minimum": 0 },
           "toughness": { "type": "integer", "minimum": 1 },
           "save": { "type": "integer", "minimum": 2, "maximum": 7 },
           "wounds": { "type": "integer", "minimum": 1 },
           "leadership": { "type": "integer", "minimum": 2, "maximum": 9 },
-          "objective_control": { "type": "integer", "minimum": 0 }
+          "objective_control": { "type": "integer", "minimum": 0 },
+          "base_size_inches": { "type": "number", "exclusiveMinimum": 0 }
         },
         "additionalProperties": true
       }

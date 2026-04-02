@@ -87,6 +87,7 @@ Each `UnitDefinition` must include:
 
 - Unit metadata (`id`, `name`, `faction`, keywords)
 - Statline(s) for model roles
+- Base size in inches for each model role
 - Allowed squad size range (1–20 supported globally)
 - Composition rules (e.g., 1 sergeant + 4–9 troopers)
 - Points rules by squad size
@@ -171,6 +172,27 @@ Provides:
 - Aura and objective radii must use inches.
 - Line-of-sight and area targeting must resolve on inch-based board coordinates.
 - If map rendering uses scale factors, conversion must be deterministic and consistent for all clients.
+
+### 10.5 Movement/Engagement Constraints (Rules Reference)
+- **Unit coherency at end of movement:**
+  - If current unit size is `<= 7`, each model must end within 2" of **at least 1** other model from its unit.
+  - If current unit size is `> 7`, each model must end within 2" of **at least 2** other models from its unit.
+- **Enemy proximity restriction:**
+  - A model may not move within 1" of an enemy model except during Charge Phase or Fight Phase, unless a specific rule overrides this.
+- These constraints are authoritative server checks and must be validated per model move endpoint.
+
+### 10.6 Turn and Battle Round Structure (Rules Reference)
+- The game lasts **5 battle rounds**.
+- Each battle round contains one full turn for each player.
+- Each turn phases in exact order:
+  1. Command Phase
+  2. Battleshock Step (end of Command Phase)
+  3. Movement Phase
+  4. Reinforcement Step (end of Movement Phase)
+  5. Shooting Phase
+  6. Charge Phase
+  7. Fight Phase
+  8. Scoring Phase
 
 ## 11. Win Conditions
 

@@ -25,7 +25,8 @@
         "save": 3,
         "wounds": 2,
         "leadership": 6,
-        "objective_control": 2
+        "objective_control": 2,
+        "base_size_inches": 1.26
       },
       "intercessor": {
         "move": 6,
@@ -33,7 +34,8 @@
         "save": 3,
         "wounds": 2,
         "leadership": 6,
-        "objective_control": 2
+        "objective_control": 2,
+        "base_size_inches": 1.26
       }
     },
     "default_wargear": [
@@ -113,7 +115,8 @@
         "save": 3,
         "wounds": 5,
         "leadership": 6,
-        "objective_control": 1
+        "objective_control": 1,
+        "base_size_inches": 1.57
       }
     },
     "default_wargear": [
@@ -144,7 +147,8 @@
         "save": 3,
         "wounds": 4,
         "leadership": 6,
-        "objective_control": 1
+        "objective_control": 1,
+        "base_size_inches": 1.26
       }
     },
     "default_wargear": [
