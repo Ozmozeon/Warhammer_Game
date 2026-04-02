@@ -1,0 +1,162 @@
+[
+  {
+    "id": "intercessor_squad_like",
+    "name": "Intercessor Squad (Like)",
+    "faction_id": "adeptus_startes",
+    "is_leader": false,
+    "keywords": ["INFANTRY", "BATTLELINE", "GRENADES", "TACTICUS", "INTERCESSOR_SQUAD"],
+    "faction_keywords": ["IMPERIUM", "ADEPTUS_STARTES"],
+    "model_count": { "min": 5, "max": 10 },
+    "composition": [
+      { "role_id": "sergeant", "min": 1, "max": 1 },
+      { "role_id": "intercessor", "min": 4, "max": 9 }
+    ],
+    "points_rules": {
+      "mode": "size_band",
+      "size_bands": [
+        { "models": 5, "points": 80 },
+        { "models": 10, "points": 160 }
+      ]
+    },
+    "stats_by_role": {
+      "sergeant": {
+        "move": 6,
+        "toughness": 4,
+        "save": 3,
+        "wounds": 2,
+        "leadership": 6,
+        "objective_control": 2,
+        "base_size_inches": 1.26
+      },
+      "intercessor": {
+        "move": 6,
+        "toughness": 4,
+        "save": 3,
+        "wounds": 2,
+        "leadership": 6,
+        "objective_control": 2,
+        "base_size_inches": 1.26
+      }
+    },
+    "default_wargear": [
+      { "role_id": "sergeant", "item_id": "bolt_pistol", "count": 1 },
+      { "role_id": "sergeant", "item_id": "bolt_rifle", "count": 1 },
+      { "role_id": "sergeant", "item_id": "close_combat_weapon", "count": 1 },
+      { "role_id": "intercessor", "item_id": "bolt_pistol", "count": 1 },
+      { "role_id": "intercessor", "item_id": "bolt_rifle", "count": 1 },
+      { "role_id": "intercessor", "item_id": "close_combat_weapon", "count": 1 }
+    ],
+    "wargear_options": [
+      {
+        "option_id": "sergeant_replace_rifle",
+        "target_role_id": "sergeant",
+        "type": "replace",
+        "choices": [
+          { "item_id": "astartes_chainsword", "points_delta": 0 },
+          { "item_id": "hand_flamer", "points_delta": 0 },
+          { "item_id": "plasma_pistol", "points_delta": 0 },
+          { "item_id": "power_weapon", "points_delta": 0 }
+        ],
+        "constraints": {
+          "max_selected_total": 1,
+          "mutually_exclusive_group": "sergeant_primary_swap"
+        }
+      },
+      {
+        "option_id": "sergeant_replace_ccw",
+        "target_role_id": "sergeant",
+        "type": "replace",
+        "choices": [
+          { "item_id": "astartes_chainsword", "points_delta": 0 },
+          { "item_id": "power_fist", "points_delta": 0 },
+          { "item_id": "power_weapon", "points_delta": 0 },
+          { "item_id": "thunder_hammer", "points_delta": 0 }
+        ],
+        "constraints": {
+          "max_selected_total": 1,
+          "mutually_exclusive_group": "sergeant_melee_swap"
+        }
+      },
+      {
+        "option_id": "grenade_launcher_per_five",
+        "target_role_id": "intercessor",
+        "type": "upgrade",
+        "choices": [
+          { "item_id": "astartes_grenade_launcher", "points_delta": 0 }
+        ],
+        "constraints": {
+          "per_n_models": 5
+        }
+      }
+    ],
+    "abilities": [
+      "objective_secured_like",
+      "target_elimination_like"
+    ],
+    "leader_joinable_by_ids": ["captain_like", "lieutenant_like"]
+  },
+  {
+    "id": "captain_like",
+    "name": "Captain (Like)",
+    "faction_id": "adeptus_startes",
+    "is_leader": true,
+    "keywords": ["INFANTRY", "CHARACTER", "LEADER", "CAPTAIN", "TACTICUS"],
+    "faction_keywords": ["IMPERIUM", "ADEPTUS_STARTES"],
+    "model_count": { "min": 1, "max": 1 },
+    "composition": [{ "role_id": "captain", "min": 1, "max": 1 }],
+    "points_rules": {
+      "mode": "size_band",
+      "size_bands": [{ "models": 1, "points": 85 }]
+    },
+    "stats_by_role": {
+      "captain": {
+        "move": 6,
+        "toughness": 4,
+        "save": 3,
+        "wounds": 5,
+        "leadership": 6,
+        "objective_control": 1,
+        "base_size_inches": 1.57
+      }
+    },
+    "default_wargear": [
+      { "role_id": "captain", "item_id": "mastercrafted_boltgun", "count": 1 },
+      { "role_id": "captain", "item_id": "power_weapon", "count": 1 }
+    ],
+    "wargear_options": [],
+    "abilities": ["leader_aura_like", "strategic_command_like"],
+    "can_join_unit_ids": ["intercessor_squad_like"]
+  },
+  {
+    "id": "lieutenant_like",
+    "name": "Lieutenant (Like)",
+    "faction_id": "adeptus_startes",
+    "is_leader": true,
+    "keywords": ["INFANTRY", "CHARACTER", "LEADER", "LIEUTENANT", "TACTICUS"],
+    "faction_keywords": ["IMPERIUM", "ADEPTUS_STARTES"],
+    "model_count": { "min": 1, "max": 1 },
+    "composition": [{ "role_id": "lieutenant", "min": 1, "max": 1 }],
+    "points_rules": {
+      "mode": "size_band",
+      "size_bands": [{ "models": 1, "points": 70 }]
+    },
+    "stats_by_role": {
+      "lieutenant": {
+        "move": 6,
+        "toughness": 4,
+        "save": 3,
+        "wounds": 4,
+        "leadership": 6,
+        "objective_control": 1,
+        "base_size_inches": 1.26
+      }
+    },
+    "default_wargear": [
+      { "role_id": "lieutenant", "item_id": "bolt_pistol", "count": 1 },
+      { "role_id": "lieutenant", "item_id": "power_weapon", "count": 1 }
+    ],
+    "wargear_options": [],
+    "abilities": ["leader_aura_like"],
+    "can_join_unit_ids": ["intercessor_squad_like"]
+  }
+]

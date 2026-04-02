@@ -1,0 +1,57 @@
+{
+  "protocol_version": "1.0.0",
+  "content_version": "0.1.0",
+  "measurement": {
+    "distance_unit": "inch",
+    "canonical_board_presets": {
+      "small": { "width": 30, "height": 40 },
+      "normal": { "width": 60, "height": 40 },
+      "large": { "width": 90, "height": 40 }
+    },
+    "default_board_preset": "normal",
+    "render_scale": {
+      "units_per_inch": 10
+    }
+  },
+  "turn_structure": {
+    "battle_rounds": 5,
+    "battle_round_definition": "one_turn_per_player",
+    "phases_in_order": [
+      { "order": 1.0, "name": "command_phase" },
+      { "order": 1.5, "name": "battleshock_step", "timing": "end_of_command_phase" },
+      { "order": 2.0, "name": "movement_phase" },
+      { "order": 2.5, "name": "reinforcement_step", "timing": "end_of_movement_phase" },
+      { "order": 3.0, "name": "shooting_phase" },
+      { "order": 4.0, "name": "charge_phase" },
+      { "order": 5.0, "name": "fight_phase" },
+      { "order": 6.0, "name": "scoring_phase" }
+    ]
+  },
+  "movement_constraints": {
+    "unit_coherency": {
+      "distance_inches": 2,
+      "neighbor_requirement_by_unit_size": [
+        { "unit_size_max": 7, "min_neighbors_within_distance": 1 },
+        { "unit_size_min": 8, "min_neighbors_within_distance": 2 }
+      ]
+    },
+    "enemy_engagement_restriction": {
+      "cannot_move_within_enemy_inches": 1,
+      "allowed_phases": ["charge_phase", "fight_phase"],
+      "override_rules_supported": true
+    }
+  },
+  "match_defaults": {
+    "points_limit": 1000,
+    "cp_start": 3,
+    "cp_gain_per_turn": 1,
+    "tick_rate_hz": 15,
+    "match_time_seconds": 1800,
+    "score_cap": 50,
+    "board_preset": "normal"
+  },
+  "roster_constraints": {
+    "max_units_per_player": 20,
+    "max_duplicates_per_unit_id": 3
+  }
+}
