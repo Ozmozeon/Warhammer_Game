@@ -1,0 +1,17 @@
+[
+  {
+    "id": "adeptus_startes",
+    "name": "Adeptus Startes",
+    "faction_keywords": ["IMPERIUM", "ADEPTUS_STARTES"],
+    "army_rules": [
+      {
+        "rule_id": "oath_of_moment_like",
+        "effect_type": "target_priority_bonus",
+        "scope": "army",
+        "params": {
+          "description": "Select one enemy unit at command timing; friendly units get hit reroll of 1 against it."
+        }
+      }
+    ]
+  }
+]

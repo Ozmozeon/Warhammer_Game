@@ -1,0 +1,21 @@
+[
+  {
+    "id": "training_ground_01",
+    "name": "Training Ground 01",
+    "measurement_unit": "inch",
+    "board_preset": "normal",
+    "size": { "width": 60, "height": 40 },
+    "spawn_zones": [
+      { "id": "p1", "x": 8, "y": 20, "radius": 6 },
+      { "id": "p2", "x": 52, "y": 20, "radius": 6 }
+    ],
+    "objectives": [
+      { "id": "obj_a", "x": 26, "y": 20, "radius": 3 },
+      { "id": "obj_b", "x": 34, "y": 20, "radius": 3 }
+    ],
+    "terrain": [
+      { "id": "cover_1", "type": "cover_zone", "x": 22, "y": 16, "w": 4, "h": 4 },
+      { "id": "block_1", "type": "los_blocker", "x": 30, "y": 15, "w": 3, "h": 8 }
+    ]
+  }
+]
