@@ -30,6 +30,17 @@ A simplified, real-time, multiplayer tactical game inspired by tabletop 40k-styl
 - Host-authoritative over WebSocket (TCP).
 - LAN + direct-IP/WAN support (manual port forwarding in v1).
 
+## 2.3 Measurement Scale and Board Dimensions (Critical)
+
+- The simulation uses **inches** as the canonical gameplay unit.
+- Unit stats and weapon ranges are interpreted directly in inches (e.g., `move: 6` means 6").
+- Supported board presets:
+  - **Small:** 30" x 40"
+  - **Normal/Primary:** 60" x 40"
+  - **Large:** 90" x 40"
+- Balance baseline is the **Normal 60" x 40"** board.
+- Engine/rendering may use pixel/world coordinates, but all gameplay calculations must convert from canonical inches.
+
 ## 3. Game Flow
 
 1. Main Menu
@@ -154,6 +165,13 @@ Provides:
 - Use stratagem
 - (Optional) use unit ability
 
+### 10.4 Spatial/Range Consistency Requirements
+- Movement distance checks must use inches.
+- Weapon range checks must use inches.
+- Aura and objective radii must use inches.
+- Line-of-sight and area targeting must resolve on inch-based board coordinates.
+- If map rendering uses scale factors, conversion must be deterministic and consistent for all clients.
+
 ## 11. Win Conditions
 
 Primary v1 mode:
@@ -197,6 +215,14 @@ Primary v1 mode:
 - `maps.json`
 - `rules.json`
 - `content_manifest.json`
+
+### 13.3 Required scale metadata
+- `rules.json` must define:
+  - canonical unit (`inch`)
+  - board size presets (small/normal/large)
+  - default preset (`normal`)
+  - render conversion (`units_per_inch`) for client display only
+- `maps.json` dimensions and coordinates must be authored in inches.
 
 ### 13.2 Runtime roster files
 - `roster_player_X.json` (pre-match locked roster)
