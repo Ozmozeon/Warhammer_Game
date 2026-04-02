@@ -1,0 +1,29 @@
+{
+  "protocol_version": "1.0.0",
+  "content_version": "0.1.0",
+  "measurement": {
+    "distance_unit": "inch",
+    "canonical_board_presets": {
+      "small": { "width": 30, "height": 40 },
+      "normal": { "width": 60, "height": 40 },
+      "large": { "width": 90, "height": 40 }
+    },
+    "default_board_preset": "normal",
+    "render_scale": {
+      "units_per_inch": 10
+    }
+  },
+  "match_defaults": {
+    "points_limit": 1000,
+    "cp_start": 3,
+    "cp_gain_per_turn": 1,
+    "tick_rate_hz": 15,
+    "match_time_seconds": 1800,
+    "score_cap": 50,
+    "board_preset": "normal"
+  },
+  "roster_constraints": {
+    "max_units_per_player": 20,
+    "max_duplicates_per_unit_id": 3
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "detachment.schema.json",
+  "title": "DetachmentDefinition",
+  "type": "object",
+  "required": ["id", "name", "army_id", "rules", "stratagem_ids"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "name": { "type": "string" },
+    "army_id": { "type": "string" },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "scope", "effect_type"],
+        "properties": {
+          "rule_id": { "type": "string" },
+          "scope": { "type": "string", "enum": ["army", "unit", "leader_attached_unit"] },
+          "effect_type": { "type": "string" },
+          "params": { "type": "object", "additionalProperties": true }
+        },
+        "additionalProperties": false
+      }
+    },
+    "stratagem_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "build_restrictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["restriction_id", "type", "params"],
+        "properties": {
+          "restriction_id": { "type": "string" },
+          "type": { "type": "string" },
+          "params": { "type": "object", "additionalProperties": true }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
