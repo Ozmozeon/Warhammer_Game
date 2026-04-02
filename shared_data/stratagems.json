@@ -1,0 +1,71 @@
+[
+  {
+    "id": "armor_of_contempt_like",
+    "name": "Armor of Contempt (Like)",
+    "detachment_id": "gladius_task_force_like",
+    "cp_cost": 1,
+    "timing": {
+      "phase_windows": ["enemy_shooting", "enemy_fight"],
+      "trigger": "friendly_unit_selected_as_target"
+    },
+    "targeting": {
+      "target_type": "single_friendly_unit",
+      "max_targets": 1,
+      "required_keywords": ["ADEPTUS_STARTES"]
+    },
+    "effects": [
+      {
+        "effect_type": "incoming_ap_reduction",
+        "duration": "end_of_phase",
+        "params": { "ap_delta": 1 }
+      }
+    ],
+    "usage_limit": { "scope": "phase", "max_uses": 1 }
+  },
+  {
+    "id": "honor_the_chapter_like",
+    "name": "Honor the Chapter (Like)",
+    "detachment_id": "gladius_task_force_like",
+    "cp_cost": 1,
+    "timing": {
+      "phase_windows": ["fight"],
+      "trigger": "friendly_unit_selected_to_fight"
+    },
+    "targeting": {
+      "target_type": "single_friendly_unit",
+      "max_targets": 1,
+      "required_keywords": ["ADEPTUS_STARTES"]
+    },
+    "effects": [
+      {
+        "effect_type": "melee_attacks_bonus",
+        "duration": "end_of_phase",
+        "params": { "attacks_delta": 1 }
+      }
+    ],
+    "usage_limit": { "scope": "phase", "max_uses": 1 }
+  },
+  {
+    "id": "rapid_redeployment_like",
+    "name": "Rapid Redeployment (Like)",
+    "detachment_id": "gladius_task_force_like",
+    "cp_cost": 1,
+    "timing": {
+      "phase_windows": ["command"],
+      "trigger": "start_of_friendly_command_phase"
+    },
+    "targeting": {
+      "target_type": "multiple_units",
+      "max_targets": 2,
+      "required_keywords": ["ADEPTUS_STARTES"]
+    },
+    "effects": [
+      {
+        "effect_type": "movement_bonus",
+        "duration": "end_of_turn",
+        "params": { "move_delta": 2.0 }
+      }
+    ],
+    "usage_limit": { "scope": "turn", "max_uses": 1 }
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "protocol_version": "1.0.0",
+  "content_version": "0.1.0",
+  "match_defaults": {
+    "points_limit": 1000,
+    "cp_start": 3,
+    "cp_gain_per_turn": 1,
+    "tick_rate_hz": 15,
+    "match_time_seconds": 1800,
+    "score_cap": 50
+  },
+  "roster_constraints": {
+    "max_units_per_player": 20,
+    "max_duplicates_per_unit_id": 3
+  }
+}
